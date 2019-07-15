@@ -11,7 +11,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<munit:config name="test-suite.xml" doc:name="MUnit configuration"/>
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="67364da2-3b1c-46b2-b2fa-285183a1120e" basePath="api" >
-		<http:request-connection host="localhost" port="8081" />
+		<http:request-connection host="localhost" port="${http.port}" />
 	</http:request-config>
 	<munit:test name="test-suite-put" description="Test" doc:id="03d9cad4-1f5f-4780-8d43-facbb0533751" >
 		<munit:enable-flow-sources>	        
