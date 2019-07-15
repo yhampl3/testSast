@@ -1,20 +1,3 @@
 {
-  "domain": "default",
-  "configs": [
-    "login-form-using-the-http-connector.xml"
-  ],
-  "redeploymentEnabled": true,
-  "name": "login-form-using-the-http-connector",
-  "minMuleVersion": "4.1.1",
-  "requiredProduct": "MULE_EE",
-  "classLoaderModelLoaderDescriptor": {
-    "id": "mule",
-    "attributes": {
-      "exportedResources": []
-    }
-  },
-  "bundleDescriptorLoader": {
-    "id": "mule",
-    "attributes": {}
-  }
+  "minMuleVersion": "4.1.4"
 }
