@@ -11,10 +11,6 @@
     <packaging>mule-application</packaging>
     <name>salesforce-data-synchronization-using-watermarking-and-batch-processing</name>
 
-    <properties>
-        <munit.version>2.1.2</munit.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>

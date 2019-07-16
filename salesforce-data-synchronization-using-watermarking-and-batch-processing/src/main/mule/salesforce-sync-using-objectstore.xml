@@ -18,11 +18,11 @@ http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mu
 			</scheduling-strategy>
 		</scheduler>
 		<os:retrieve key="lastUpdateTimestampKey" doc:name="Retrieve lastUpdateTimestamp" doc:id="db0497b5-172a-41b1-b758-c1e1d2d1029e" target="lastUpdateTimestamp" targetValue="#[payload as String]" objectStore="Object_store">
-						<os:default-value><![CDATA[#[${watermark.default.expression}]]]></os:default-value>
+						<os:default-value ><![CDATA[#[read(p('watermark.default.expression'))]]]></os:default-value>
 					</os:retrieve>
 		<salesforce:query config-ref="Salesforce_Sfdc_config" doc:name="Read Contacts updated since last update" doc:id="2a4b57de-204d-43f7-8859-0bc39861c6ff">
 						<salesforce:salesforce-query>SELECT Id,Name,LastModifiedDate FROM Contact WHERE LastModifiedDate &gt; :lastUpdateTimestamp</salesforce:salesforce-query>
-						<salesforce:parameters><![CDATA[#[output applicaton/java
+						<salesforce:parameters><![CDATA[#[output application/java
 ---
 {
 	"lastUpdateTimestamp" : vars.lastUpdateTimestamp
