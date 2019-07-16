@@ -10,11 +10,7 @@
     <artifactId>import-contacts-asynchronously</artifactId>
     <packaging>mule-application</packaging>
     <name>import-contacts-asynchronously</name>
-
-    <properties>
-        <munit.version>2.1.2</munit.version>
-    </properties>
-
+    
     <build>
         <plugins>
             <plugin>

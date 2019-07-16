@@ -24,7 +24,7 @@ http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/cu
 	<flow name="import-trigger" doc:id="1ccede27-29c6-45e1-9f90-dada5a6954cb" >
 		<http:listener doc:name="Listener" doc:id="1ac661df-7735-417e-9d1c-da3824a90bb3" config-ref="HTTP_Listener_config" path="/import/trigger" allowedMethods="POST">
 			<http:response statusCode="#[vars.httpStatus default 201]">
-				<http:headers ><![CDATA[#[output applicaton/java
+				<http:headers ><![CDATA[#[output application/java
 ---
 {
 	"Location" : vars.locationHeader
