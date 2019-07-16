@@ -12,10 +12,6 @@
 	<packaging>mule-application</packaging>
 	<name>extracting-data-from-LDAP-directory</name>
 
-	<properties>
-		<mule.ldap.connector.version>3.0.0</mule.ldap.connector.version>
-	</properties>
-
     <build>
         <plugins>
            <plugin>
@@ -37,13 +33,13 @@
 			<version>${http.connector.version}</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
-		<dependency>
-			<groupId>org.mule.connectors</groupId>
-			<artifactId>mule-ldap-connector</artifactId>
-			<version>${mule.ldap.connector.version}</version>
-			<classifier>mule-plugin</classifier>
-		</dependency>
-	</dependencies>
+    		<dependency>
+            <groupId>com.mulesoft.connectors</groupId>
+            <artifactId>mule-ldap-connector</artifactId>
+            <version>${mule.ldap.connector.version}</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+    </dependencies>
 
 	<repositories>
 		<repository>
