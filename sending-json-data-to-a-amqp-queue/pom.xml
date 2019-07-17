@@ -12,10 +12,6 @@
     <packaging>mule-application</packaging>
 	<name>sending-json-data-to-a-amqp-queue</name>
 
-    <properties>
-		<amqp.connector.version>1.0.0</amqp.connector.version>
-	</properties>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -24,10 +20,8 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<configuration>
-                   		<classifier>mule-application-example</classifier>
-               		</configuration>
-				</configuration>
+                   	<classifier>mule-application-example</classifier>
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>
