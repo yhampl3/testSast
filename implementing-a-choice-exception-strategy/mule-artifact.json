@@ -1,20 +1,3 @@
 {
-  "domain": "default",
-  "configs": [
-    "implementing-a-choice-exception-strategy.xml"
-  ],
-  "redeploymentEnabled": true,
-  "name": "implementing-a-choice-exception-strategy",
-  "minMuleVersion": "4.1.1",
-  "requiredProduct": "MULE_EE",
-  "classLoaderModelLoaderDescriptor": {
-    "id": "mule",
-    "attributes": {
-      "exportedResources": []
-    }
-  },
-  "bundleDescriptorLoader": {
-    "id": "mule",
-    "attributes": {}
-  }
+  "minMuleVersion": "4.1.4"
 }

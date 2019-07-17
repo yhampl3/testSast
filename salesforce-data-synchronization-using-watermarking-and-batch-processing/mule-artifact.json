@@ -1,20 +1,3 @@
 {
-  "configs": [
-    "salesforce-sync-using-objectstore.xml"
-  ],
-  "secureProperties": [],
-  "redeploymentEnabled": true,
-  "name": "salesforce-data-synchronization-using-watermarking-and-batch-processing",
-  "minMuleVersion": "4.1.1",
-  "requiredProduct": "MULE_EE",
-  "classLoaderModelLoaderDescriptor": {
-    "id": "mule",
-    "attributes": {
-      "exportedResources": []
-    }
-  },
-  "bundleDescriptorLoader": {
-    "id": "mule",
-    "attributes": {}
-  }
+  "minMuleVersion": "4.1.4"
 }

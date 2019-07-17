@@ -11,12 +11,7 @@
     <artifactId>adding-a-new-customer-to-workday-revenue-management</artifactId>
     <version>2.1.5-SNAPSHOT</version>
     <packaging>mule-application</packaging>
-
     <name>adding-a-new-customer-to-workday-revenue-management</name>
-
-    <properties>
-        <workday.connector.version>9.2.0</workday.connector.version>
-    </properties>
 
     <build>
         <plugins>

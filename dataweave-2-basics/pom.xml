@@ -11,11 +11,6 @@
 	<packaging>mule-application</packaging>
 	<name>dataweave-2-basics</name>
 
-	<properties>
-		<mule.connectors.version>1.1.0</mule.connectors.version>
-		<munit.version>2.1.2</munit.version>
-	</properties>
-
 	<build>
 		<testResources>
 			<testResource>

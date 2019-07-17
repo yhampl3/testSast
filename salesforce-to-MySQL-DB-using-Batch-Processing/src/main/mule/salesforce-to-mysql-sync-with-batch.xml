@@ -22,8 +22,8 @@ http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/cu
 			</scheduling-strategy>
 		</scheduler>
 		<salesforce:query config-ref="Salesforce_Sfdc_config" doc:name="Query Salesforce for Contacts" doc:id="5bb8333d-909a-4aba-84f7-59265bde2366" >
-			<salesforce:salesforce-query >SELECT Email,FirstName,LastModifiedDate,LastName FROM Contact WHERE LastModifiedDate &gt; :timestamp</salesforce:salesforce-query>
-			<salesforce:parameters ><![CDATA[#[output applicaton/java
+			<salesforce:salesforce-query >SELECT Email,FirstName,LastModifiedDate,LastName FROM Contact WHERE LastModifiedDate &gt; :timestamp </salesforce:salesforce-query>
+			<salesforce:parameters ><![CDATA[#[output application/java
 ---
 {
 	"timestamp" : ${sfdc.query.lastModifiedDateLimit}

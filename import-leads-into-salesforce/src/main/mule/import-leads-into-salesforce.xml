@@ -45,7 +45,7 @@ payload map {
 				<batch:step name="LeadExistsStep" doc:id="2fb82988-5aec-4036-8211-097456a2c2c8" >
 					<salesforce:query config-ref="Salesforce_Sfdc_config" doc:name="Find lead" doc:id="1b09ee90-feac-4f77-9b89-e2a6c6ec0f41" target="leadNotFound" targetValue="#[isEmpty(payload)]">
 						<salesforce:salesforce-query >SELECT Id FROM Lead WHERE Email = ':email'</salesforce:salesforce-query>
-						<salesforce:parameters ><![CDATA[#[output applicaton/java
+						<salesforce:parameters ><![CDATA[#[output application/java
 ---
 {
 	"email" : payload.Email

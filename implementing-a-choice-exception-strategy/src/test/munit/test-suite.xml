@@ -14,7 +14,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<munit:config name="test-suite.xml" />
 	<http:request-config name="HTTP_Request_configuration"
 		doc:name="HTTP Request configuration" doc:id="eed991c6-9e98-4f4e-aaf9-10931a107e11">
-		<http:request-connection host="0.0.0.0" port="8082" />
+		<http:request-connection host="0.0.0.0" port="8081" />
 	</http:request-config>
 	<configuration-properties doc:name="Configuration properties"
 		doc:id="21e648df-b45a-4bd6-bf8a-2ded0f37ee9b" file="test.properties" />
@@ -27,7 +27,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 			<http:request method="GET" doc:name="Request"
 				doc:id="0536b7f0-ef59-4ffd-aca0-21c8cbc28a2a" path='/'
 				config-ref="HTTP_Request_configuration">
-				<http:query-params><![CDATA[#[output applicaton/java
+				<http:query-params><![CDATA[#[output application/java
 ---
 {
 	"filePath" : p('file.input.path')
@@ -84,7 +84,7 @@ output application/java
 					<on-error-continue enableNotifications="true"
 						logException="true" doc:name="On Error Continue"
 						doc:id="4ad52c41-f44e-4968-8b76-63b0fc8f741f">
-						<munit-tools:assert-that doc:name='Assert that request failed "not found (404)"' doc:id="f8b3dd47-c439-456a-86e1-424d45bb2f71" expression="#[error.description]" is="#[MunitTools::equalTo(&quot;HTTP GET on resource 'http://0.0.0.0:8082/?filePath=invalid' failed: not found (404).&quot;)]" />
+						<munit-tools:assert-that doc:name='Assert that request failed "not found (404)"' doc:id="f8b3dd47-c439-456a-86e1-424d45bb2f71" expression="#[error.description]" is="#[MunitTools::equalTo(&quot;HTTP GET on resource 'http://0.0.0.0:8081/?filePath=invalid' failed: not found (404).&quot;)]" />
 					</on-error-continue>
 				</error-handler>
 			</try>
@@ -99,7 +99,7 @@ output application/java
 		<munit:execution>
 			<try doc:name="Try" doc:id="25460a50-bf89-478b-9523-1080bb6d1648" >
 				<http:request method="GET" doc:name="Request" doc:id="0536b7f0-ef59-4ffd-aca0-21c8cbc28a2a" config-ref="HTTP_Request_configuration" path="/" >
-					<http:query-params ><![CDATA[#[output applicaton/java
+					<http:query-params ><![CDATA[#[output application/java
 ---
 {
 	"filePath" : p('file.noReadAccessInput.path')

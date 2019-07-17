@@ -11,10 +11,6 @@
 	<packaging>mule-application</packaging>
 	<name>get-customer-list-from-netsuite</name>
 
-	<properties>
-		<munit.version>2.1.2</munit.version>
-	</properties>
-
 	<build>
 		<testResources>
 			<testResource>
