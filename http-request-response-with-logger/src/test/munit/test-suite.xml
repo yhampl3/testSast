@@ -15,7 +15,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<http:request-config name="HTTP_Request_configuration"
 		doc:name="HTTP Request configuration" doc:id="0290942b-09fd-455e-ba21-672696ed5bb8"
 		basePath="/">
-		<http:request-connection host="0.0.0.0" port="8084" />
+		<http:request-connection host="0.0.0.0" port="${http.port}" />
 	</http:request-config>
 	<munit:test name="http-request-response-with-loggerFlowTest"
 		description="Test" doc:id="9b178ca2-3994-4656-9af6-320e6c724b4a">
