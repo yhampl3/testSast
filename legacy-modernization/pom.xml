@@ -47,7 +47,7 @@
             <version>${file.connector.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
-    		<dependency>
+            <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-soapkit-module</artifactId>
             <version>${mule.soapapikit.version}</version>

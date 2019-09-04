@@ -45,6 +45,7 @@
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>
+    
     <repositories>
         <repository>
             <id>anypoint-exchange</id>
