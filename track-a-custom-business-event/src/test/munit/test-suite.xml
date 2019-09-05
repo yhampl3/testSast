@@ -14,7 +14,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	<munit:config name="test-suite.xml" />
 	<http:request-config name="HTTP_Request_configuration"
 		doc:name="HTTP Request configuration" doc:id="063235fc-785a-45ef-a223-d78d8f06affa">
-		<http:request-connection host="0.0.0.0" port="8082" />
+		<http:request-connection host="0.0.0.0" port="${http.port}" />
 	</http:request-config>
 	<munit:test name="track-a-custom-business-eventFlowTest1" description="Test" doc:id="0e1425ad-604f-481b-8fd1-d3ee7b9c5c4d" >
 		<munit:enable-flow-sources>
@@ -27,9 +27,9 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 output application/json
 ---
 {
-	"email": "john@mulesoft.com", 
-	"item name": "shoes", 
-	"item units": 2, 
+	"email": "john@mulesoft.com",
+	"item name": "shoes",
+	"item units": 2,
 	"item price per unit": 10,
 	"membership": "free"
 }]]></ee:set-payload>
@@ -40,10 +40,10 @@ output application/json
 		<munit:validation >
 			<munit-tools:assert-that doc:name="Assert that price per unit is equal to 8.5" doc:id="6fe2bebb-8ffa-4bfe-86a5-dd1373863398" expression='#[output application/java --- payload["item price per unit"]]' is="#[MunitTools::equalTo(8.5)]"/>
 			<munit-tools:assert-that doc:name="Assert response status" doc:id="e399bb68-26ef-428c-9b68-89ca73bf76b1" expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(200)]" />
-			
+
 		</munit:validation>
 	</munit:test>
-	
+
 	<munit:test name="track-a-custom-business-eventFlowTest2" description="Test" doc:id="0e1425ad-604f-481b-8fd1-d3ee7b9c5c4d" >
 		<munit:enable-flow-sources>
 			<munit:enable-flow-source value="track-a-custom-business-eventFlow" />
@@ -55,9 +55,9 @@ output application/json
 output application/json
 ---
 {
-	"email": "john@mulesoft.com", 
-	"item name": "jeans", 
-	"item units": 2, 
+	"email": "john@mulesoft.com",
+	"item name": "jeans",
+	"item units": 2,
 	"item price per unit": 10,
 	"membership": "free"
 }]]></ee:set-payload>
@@ -68,10 +68,10 @@ output application/json
 		<munit:validation >
 			<munit-tools:assert-that doc:name="Assert that price per unit is equal to 8" doc:id="6fe2bebb-8ffa-4bfe-86a5-dd1373863398" expression='#[output application/java --- payload["item price per unit"]]' is="#[MunitTools::equalTo(8)]"/>
 			<munit-tools:assert-that doc:name="Assert response status" doc:id="e399bb68-26ef-428c-9b68-89ca73bf76b1" expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(200)]" />
-			
+
 		</munit:validation>
 	</munit:test>
-	
+
 	<munit:test name="track-a-custom-business-eventFlowTest3" description="Test" doc:id="0e1425ad-604f-481b-8fd1-d3ee7b9c5c4d" >
 		<munit:enable-flow-sources>
 			<munit:enable-flow-source value="track-a-custom-business-eventFlow" />
@@ -83,9 +83,9 @@ output application/json
 output application/json
 ---
 {
-	"email": "john@mulesoft.com", 
-	"item name": "jackets", 
-	"item units": 2, 
+	"email": "john@mulesoft.com",
+	"item name": "jackets",
+	"item units": 2,
 	"item price per unit": 10,
 	"membership": "free"
 }]]></ee:set-payload>
@@ -96,7 +96,7 @@ output application/json
 		<munit:validation >
 			<munit-tools:assert-that doc:name="Assert that price per unit is equal to 7" doc:id="6fe2bebb-8ffa-4bfe-86a5-dd1373863398" expression='#[output application/java --- payload["item price per unit"]]' is="#[MunitTools::equalTo(7)]"/>
 			<munit-tools:assert-that doc:name="Assert response status" doc:id="e399bb68-26ef-428c-9b68-89ca73bf76b1" expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(200)]" />
-			
+
 		</munit:validation>
 	</munit:test>
 

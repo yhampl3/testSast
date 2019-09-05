@@ -7,8 +7,9 @@
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<configuration-properties doc:name="Configuration properties" file="mule-artifact.properties" />
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="6a037efc-3ac9-42ae-b108-1dad24ca3bb2" >
-		<http:listener-connection host="0.0.0.0" port="8081" />
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
 	</http:listener-config>
 	<flow name="content-based-routingFlow" doc:id="7cb1512d-7ca0-4db6-87d8-9080bbaf0e71" >
 		<http:listener config-ref="HTTP_Listener_config" path="/" doc:name="Listener" doc:id="175bd54e-3d54-408f-861c-abc042292dda" />

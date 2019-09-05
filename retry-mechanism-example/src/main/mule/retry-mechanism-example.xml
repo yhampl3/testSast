@@ -6,8 +6,9 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<configuration-properties file="mule-artifact.properties" doc:name="Configuration properties"/>
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f91d67cd-026c-4aa8-af8e-73b8b0b8eb44" >
-		<http:listener-connection host="0.0.0.0" port="8081" />
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
 	</http:listener-config>
 	<flow name="retry-mechanism-exampleFlow" doc:id="878612f1-38ee-4f55-9f68-aca9487331d2" >
 		<http:listener doc:name="Listener" doc:id="f584fce5-7e4d-4383-91b8-770be9131861" config-ref="HTTP_Listener_config" path="/trigger"/>

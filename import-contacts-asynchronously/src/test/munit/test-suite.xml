@@ -5,7 +5,7 @@
 	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
 	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xsi:schemaLocation="
-http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd 
+http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
 		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd
@@ -13,7 +13,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd">
 	<munit:config name="test-suite.xml" />
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="3cfb1b75-5d2c-48b1-89c7-40bbfbe118c0" >
-		<http:request-connection host="localhost" port="8081" />
+		<http:request-connection host="localhost" port="${http.port}" />
 	</http:request-config>
 	<munit:test name="test-suite-import-triggerTest" description="Test" doc:id="f1d44ae8-a445-43df-b8e1-93dbf6fd3388" >
 		<munit:enable-flow-sources>
@@ -40,11 +40,11 @@ http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mu
 			<munit-tools:assert-that doc:name="Assert that response body is correct" doc:id="dfc38c56-5a7c-454a-8253-bdc7c0fc57df" expression="#[payload]" is="#[MunitTools::equalTo('IN PROGRESS')]" message="Incorrect response body!"/>
 			<scripting:execute engine="groovy" doc:name="Sleep for 35s until the processing is completed" doc:id="d8179941-bad3-4db5-a710-8962096fa053" >
 				<scripting:code >sleep(35000)</scripting:code>
-			</scripting:execute>			
+			</scripting:execute>
 			<http:request method="GET" doc:name="Get the status based on location header" doc:id="7064170b-4dcb-4dc9-94aa-6166756711ee" config-ref="HTTP_Request_configuration" url="#[vars.statusURL]" outputMimeType="text/plain"/>
 			<munit-tools:assert-that doc:name="Assert response status" doc:id="eec3c143-9eed-4cc2-b184-5fbb71f630ff" expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(200)]" message="Response status is not valid!"/>
 			<munit-tools:assert-that doc:name="Assert that response body is correct" doc:id="dfc38c56-5a7c-454a-8253-bdc7c0fc57df" expression="#[payload]" is="#[MunitTools::equalTo('COMPLETED')]" message="Incorrect response body!"/>
-		
+
 </munit:validation>
 	</munit:test>
 	<munit:test name="get-import-status-negativeTest" description="Test" doc:id="155ef28c-6342-4bde-82d3-53eb34861959" >
@@ -61,11 +61,11 @@ http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mu
 }]]]></http:uri-params>
 					<http:response-validator >
 						<http:failure-status-code-validator values="404" />
-					</http:response-validator>					
+					</http:response-validator>
 			</http:request>
 				<error-handler >
 					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="43a1e7f8-050b-42a1-b678-a4e0611ede7e" >
-						<munit-tools:assert-that doc:name="Assert error message" doc:id="dfc38c56-5a7c-454a-8253-bdc7c0fc57df" expression="#[error.description]" is="#[MunitTools::equalTo(&quot;HTTP GET on resource 'http://localhost:8081/import/status/invalidId' failed: not found (404).&quot;)]" message="Incorrect error message!" />
+						<munit-tools:assert-that doc:name="Assert error message" doc:id="dfc38c56-5a7c-454a-8253-bdc7c0fc57df" expression="#[error.description]" is="#[MunitTools::equalTo(&quot;HTTP GET on resource 'http://localhost:&quot; ++ p('http.port') ++ &quot;/import/status/invalidId' failed: not found (404).&quot;)]" message="Incorrect error message!" />
 					</on-error-continue>
 				</error-handler>
 			</try>

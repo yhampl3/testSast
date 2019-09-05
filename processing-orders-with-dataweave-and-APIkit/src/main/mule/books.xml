@@ -8,11 +8,12 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<configuration-properties doc:name="Configuration properties" file="mule-artifact.properties" />
 	<file:config name="File_Config" doc:name="File Config" doc:id="23a15a10-142c-4b29-b973-e41896501660" >
 		<file:connection workingDir="src/main/resources" />
 	</file:config>
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="0290942b-09fd-455e-ba21-672696ed5bb8" basePath="/api/" >
-		<http:request-connection host="localhost" port="8081" />
+		<http:request-connection host="localhost" port="${http.port}" />
 	</http:request-config>
 	<flow name="booksFlow" doc:id="d87ccaa7-263d-40d2-a10b-7ef04f0c48d9" >
 		<scheduler doc:name="Scheduler" doc:id="01d446b7-0fa0-4299-9201-04a33a2278c4" >

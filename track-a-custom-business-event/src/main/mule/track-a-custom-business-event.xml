@@ -9,10 +9,11 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+    <configuration-properties doc:name="Configuration properties" file="mule-artifact.properties" />
 	<http:listener-config name="HTTP_Listener_config"
 		doc:name="HTTP Listener config" doc:id="0b77d40d-380b-46d9-a1c4-89ff61edb415">
 		<http:listener-connection host="0.0.0.0"
-			port="8082" />
+			port="${http.port}" />
 	</http:listener-config>
 	<flow name="track-a-custom-business-eventFlow" doc:id="2274e867-45cb-44f9-93bc-559bd0cbacb9">
 		<http:listener doc:name="Listener"

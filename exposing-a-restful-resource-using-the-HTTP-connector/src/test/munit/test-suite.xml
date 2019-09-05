@@ -12,7 +12,7 @@ http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/cu
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<munit:config name="test-suite.xml" />
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="3cfb1b75-5d2c-48b1-89c7-40bbfbe118c0" >
-		<http:request-connection host="localhost" port="8081" />
+		<http:request-connection host="localhost" port="${http.port}" />
 	</http:request-config>
 	<munit:test name="test-suite-storePersonFlowTest" description="Test" doc:id="67d00ca0-efcb-4f24-9419-74aa259927ae" >
 	    <munit:enable-flow-sources>
@@ -24,7 +24,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
   	"firstname":"Jerry",
   	"lastname":"Jameson",
   	"age": "12",
-  	"address": 
+  	"address":
      {
      	"streetAddress":"Lincoln St.",
          "city":"San Francisco",
@@ -62,7 +62,7 @@ output application/java
  	firstname: 'TestFirstname',
  	lastname: 'TestLastname',
  	age: 99,
- 	address: 
+ 	address:
     {
 	   	"streetAddress":"Test St.",
 	    "city":"TestCity",
@@ -108,7 +108,7 @@ output application/java
  	firstname: 'TestFirstname',
  	lastname: 'TestLastname',
  	age: 99,
- 	address: 
+ 	address:
     {
 	   	"streetAddress":"Test St.",
 	    "city":"TestCity",
@@ -133,7 +133,7 @@ output application/java
 			<munit-tools:assert-that doc:name="Assert that personId is set" doc:id="edd292fa-8a8c-41e4-817f-a7cda2d91cf1" expression="#[payload[0].personId]" is="#[MunitTools::notNullValue()]" message="Person ID not set!"/>
 			<munit-tools:assert-that doc:name="Assert lastname" doc:id="d1d2b2cf-c54a-4ea3-96bc-859e92a46d60" expression="#[payload[0].lastname]" is="#[MunitTools::equalTo('TestLastname')]" message="Lastname is not correct!"/>
 			<os:remove doc:name="Clean up" doc:id="8fe19626-26c9-4b21-a4fd-3f9a309d1287" key="#[payload[0].personId]" objectStore="Object_store"/>
-		</munit:validation>	
+		</munit:validation>
 	</munit:test>
 
 
