@@ -5,15 +5,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:munit="http://www.mulesoft.org/schema/mule/munit"
 	xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools" xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xsi:schemaLocation="
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<munit:config name="test-suite.xml" />
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="3cfb1b75-5d2c-48b1-89c7-40bbfbe118c0" >
-		<http:request-connection host="localhost" port="8081" />
-	</http:request-config>	
+		<http:request-connection host="localhost" port="${http.port}" />
+	</http:request-config>
 	<munit:test name="test-suite-querying-db-attaching-results-to-emailFlowTest" description="Test" doc:id="93bbfcec-2e81-4d37-875d-8d4323172474" >
 		<munit:enable-flow-sources>
 	        <munit:enable-flow-source value="querying-db-attaching-results-to-emailFlow"/>

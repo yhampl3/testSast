@@ -43,7 +43,7 @@
                             <format>html</format>
                         </formats>
                     </coverage>
-				    <runtimeVersion>${app.runtime}</runtimeVersion>
+                    <runtimeVersion>${app.runtime}</runtimeVersion>
                 </configuration>
             </plugin>
         </plugins>
@@ -83,6 +83,7 @@
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>
+    
     <repositories>
         <repository>
             <id>anypoint-exchange</id>

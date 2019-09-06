@@ -49,7 +49,10 @@
                             <format>html</format>
                         </formats>
                     </coverage>
-				    <runtimeVersion>${app.runtime}</runtimeVersion>
+                    <runtimeVersion>${app.runtime}</runtimeVersion>
+                    <dynamicPorts>
+                        <dynamicPort>http.port</dynamicPort>
+                    </dynamicPorts>
                 </configuration>
             </plugin>
         </plugins>
@@ -95,6 +98,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    
     <repositories>
         <repository>
             <id>anypoint-exchange</id>

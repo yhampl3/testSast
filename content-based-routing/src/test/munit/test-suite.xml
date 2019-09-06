@@ -5,14 +5,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:munit="http://www.mulesoft.org/schema/mule/munit"
 	xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools" xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xsi:schemaLocation="
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd 
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<munit:config name="test-suite.xml" />
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="3cfb1b75-5d2c-48b1-89c7-40bbfbe118c0" >
-		<http:request-connection host="localhost" port="8081" />
+		<http:request-connection host="localhost" port="${http.port}" />
 	</http:request-config>
 	<munit:test name="no-language-specified-routingFlowTest" description="Test" doc:id="80df2390-b586-4333-97fd-7048a17c3c4b" >
 		 <munit:enable-flow-sources>
@@ -25,7 +25,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 {
 	"Content-Type" : "application/json"
 }]]]></http:headers>
-			
+
 </http:request>
 		</munit:execution>
 		<munit:validation >
@@ -57,7 +57,7 @@ payload as String]]></ee:set-payload>
 {
 	"language" : "Spanish"
 }]]]></http:query-params>
-			
+
 
 </http:request>
 		</munit:execution>
@@ -90,7 +90,7 @@ payload as String]]></ee:set-payload>
 {
 	"language" : "French"
 }]]]></http:query-params>
-			
+
 
 </http:request>
 		</munit:execution>
@@ -123,7 +123,7 @@ payload as String]]></ee:set-payload>
 {
 	"language" : "XYZ"
 }]]]></http:query-params>
-			
+
 
 </http:request>
 		</munit:execution>
@@ -139,7 +139,7 @@ payload as String]]></ee:set-payload>
 			<munit-tools:assert-that doc:name="Assert the response status" doc:id="75bb7d0a-abd2-4526-8463-c826bb7507b0" message="Response status is not valid!" expression="#[attributes.statusCode]" is="#[MunitTools::equalTo(200)]"/>
 			<munit-tools:assert-that doc:name="Assert the response body" doc:id="d1d2b2cf-c54a-4ea3-96bc-859e92a46d60" expression="#[payload]" is="#[MunitTools::equalTo('Hello!')]" message="Language is not correct!"/>
 		</munit:validation>
-	</munit:test>			
+	</munit:test>
 	<munit:test name="test-suite-reply-in-default-languageSub_FlowTest" description="Test" doc:id="10b5781b-1cfc-47b9-88d6-013de4251165" >
 		<munit:execution >
 			<flow-ref doc:name="Flow-ref to reply-in-default-languageSub_Flow" doc:id="4c5f9f97-e1f6-430e-b736-59f6aa0163c6" name="reply-in-default-languageSub_Flow"/>

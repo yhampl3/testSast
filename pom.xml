@@ -8,7 +8,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>adding-a-new-customer-to-workday-revenue-management</module>
-		<module>addition-using-javascript-transformer</module>
+        <module>addition-using-javascript-transformer</module>
         <module>authenticating-salesforce-using-oauth2</module>
         <module>cache-scope-with-salesforce-contacts</module>
         <module>content-based-routing</module>

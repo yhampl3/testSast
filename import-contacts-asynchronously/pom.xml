@@ -10,7 +10,7 @@
     <artifactId>import-contacts-asynchronously</artifactId>
     <packaging>mule-application</packaging>
     <name>import-contacts-asynchronously</name>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -43,7 +43,10 @@
                             <format>html</format>
                         </formats>
                     </coverage>
-				    <runtimeVersion>${app.runtime}</runtimeVersion>
+                    <runtimeVersion>${app.runtime}</runtimeVersion>
+                    <dynamicPorts>
+                        <dynamicPort>http.port</dynamicPort>
+                    </dynamicPorts>
                 </configuration>
             </plugin>
         </plugins>
@@ -95,6 +98,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    
     <repositories>
         <repository>
             <id>anypoint-exchange</id>

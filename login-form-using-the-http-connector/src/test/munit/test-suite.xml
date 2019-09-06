@@ -15,7 +15,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<http:request-config name="HTTP_Request_test_configuration"
 		doc:name="HTTP Request configuration" doc:id="0290942b-09fd-455e-ba21-672696ed5bb8"
 		basePath="/">
-		<http:request-connection host="0.0.0.0" port="8081" />
+		<http:request-connection host="0.0.0.0" port="${http.port}" />
 	</http:request-config>
 	<munit:test name="GetLoginPageFlowTest" description="Test"
 		doc:id="883aac5b-8a25-44ac-a6e9-db18ffb43d94">
@@ -33,7 +33,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 				<ee:message>
 					<ee:set-payload><![CDATA[%dw 2.0
 output application/java
---- 
+---
 sizeOf(payload.html.body.form)]]></ee:set-payload>
 				</ee:message>
 			</ee:transform>

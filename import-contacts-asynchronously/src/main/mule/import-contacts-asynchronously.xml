@@ -11,7 +11,7 @@ http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mu
 http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd
 http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="a249d03d-b9e2-4b5f-a2e2-baf5f9f70f00" >
-		<http:listener-connection port="8081" host="0.0.0.0"/>
+		<http:listener-connection port="${http.port}" host="0.0.0.0"/>
 	</http:listener-config>
 	<salesforce:sfdc-config name="Salesforce_Sfdc_config" doc:name="Salesforce Sfdc config" doc:id="eed43e9c-2d4d-45f8-9ac9-2cb5d31a9cee" >
 		<salesforce:basic-connection username="${sfdc.user}" password="${sfdc.password}" securityToken="${sfdc.securityToken}" />

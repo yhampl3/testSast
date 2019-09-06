@@ -51,10 +51,10 @@
                             <format>html</format>
                         </formats>
                     </coverage>
-				    <runtimeVersion>${app.runtime}</runtimeVersion>
-					<dynamicPorts>
-						<dynamicPort>http.port</dynamicPort>
-					</dynamicPorts>
+                    <runtimeVersion>${app.runtime}</runtimeVersion>
+                    <dynamicPorts>
+                        <dynamicPort>http.port</dynamicPort>
+                    </dynamicPorts>
                 </configuration>
             </plugin>
         </plugins>
@@ -67,7 +67,7 @@
             <version>${http.connector.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
-		<dependency>
+		    <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-soapkit-module</artifactId>
             <version>${soapkit.connector.version}</version>

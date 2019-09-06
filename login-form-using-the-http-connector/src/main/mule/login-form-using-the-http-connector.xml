@@ -7,11 +7,12 @@
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<configuration-properties file="mule-artifact.properties" doc:name="Configuration properties"/>
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="6e6ff630-fd50-4fc9-a332-d56a01ebbda1" >
-		<http:listener-connection host="0.0.0.0" port="8081" />
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
 	</http:listener-config>
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="7fe598a3-947a-4c5b-b94b-6a63ec898495" >
-		<http:request-connection host="0.0.0.0" port="8081" />
+		<http:request-connection host="0.0.0.0" port="${http.port}" />
 	</http:request-config>
 	<flow name="GetLoginPageFlow" doc:id="16f38dec-055f-4f3d-8a02-e3c4d1ed84fd" >
 		<http:listener config-ref="HTTP_Listener_config" path="/login" doc:name="Listener" doc:id="8c7ed76d-d8ca-4fa5-bced-83ab3a416862" allowedMethods="GET"/>

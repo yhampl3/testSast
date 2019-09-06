@@ -14,7 +14,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<munit:config name="test-suite.xml" />
 	<http:request-config name="HTTP_Request_configuration"
 		doc:name="HTTP Request configuration" doc:id="eed991c6-9e98-4f4e-aaf9-10931a107e11">
-		<http:request-connection host="0.0.0.0" port="8081" />
+		<http:request-connection host="0.0.0.0" port="${http.port}" />
 	</http:request-config>
 	<configuration-properties doc:name="Configuration properties"
 		doc:id="21e648df-b45a-4bd6-bf8a-2ded0f37ee9b" file="test.properties" />

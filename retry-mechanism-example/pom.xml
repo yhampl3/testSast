@@ -43,7 +43,10 @@
                             <format>html</format>
                         </formats>
                     </coverage>
-				    <runtimeVersion>${app.runtime}</runtimeVersion>
+                    <runtimeVersion>${app.runtime}</runtimeVersion>
+                    <dynamicPorts>
+                        <dynamicPort>http.port</dynamicPort>
+                    </dynamicPorts>
                 </configuration>
             </plugin>
         </plugins>
@@ -81,6 +84,7 @@
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>
+
     <repositories>
         <repository>
             <id>anypoint-exchange</id>
