@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.mule.examples</groupId>
         <artifactId>examples-catalog</artifactId>
-        <version>2.1.4</version>
+        <version>2.1.5-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -13,14 +13,13 @@
     <packaging>mule-application</packaging>
     <name>xml-only-soap-webservice</name>
 
-    <properties>
-        <mule.maven.plugin.version>3.1.6</mule.maven.plugin.version>
-        <soapkit.module.version>1.1.2</soapkit.module.version>
-        <mule.apikit.module>1.1.7</mule.apikit.module>
-        <munit.version>2.1.2</munit.version>
-    </properties>
-
-    <build>
+	<build>
+        <testResources>
+            <testResource>
+                <directory>src/test/munit</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
         <plugins>
             <plugin>
                 <groupId>org.mule.tools.maven</groupId>
@@ -52,6 +51,7 @@
                             <format>html</format>
                         </formats>
                     </coverage>
+                    <runtimeVersion>${app.runtime}</runtimeVersion>
                     <dynamicPorts>
                         <dynamicPort>http.port</dynamicPort>
                     </dynamicPorts>
@@ -59,7 +59,7 @@
             </plugin>
         </plugins>
     </build>
-
+    
     <dependencies>
         <dependency>
             <groupId>org.mule.connectors</groupId>
@@ -67,17 +67,16 @@
             <version>${http.connector.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
-        <dependency>
+		    <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-soapkit-module</artifactId>
-            <version>${soapkit.module.version}</version>
+            <version>${soapkit.connector.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
-
         <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-apikit-module</artifactId>
-            <version>${mule.apikit.module}</version>
+            <version>${mule.apikit.version}</version>
             <classifier>mule-plugin</classifier>
         </dependency>
         <dependency>
@@ -110,5 +109,4 @@
             <layout>default</layout>
         </repository>
     </repositories>
-
 </project>

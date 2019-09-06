@@ -11,10 +11,6 @@
     <packaging>mule-application</packaging>
     <name>sending-json-data-to-a-amqp-queue</name>
 
-    <properties>
-        <amqp.connector.version>1.0.0</amqp.connector.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
