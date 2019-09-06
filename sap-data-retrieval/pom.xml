@@ -14,10 +14,6 @@
     <version>2.1.5-SNAPSHOT</version>
     <name>sap-data-retrieval</name>
 
-    <properties>
-        <sap.connector.version>4.0.0</sap.connector.version>
-        <mule.apikit.version>1.1.0</mule.apikit.version>
-    </properties>
     <build>
         <plugins>
             <plugin>
