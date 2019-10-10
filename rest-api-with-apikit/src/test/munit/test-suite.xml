@@ -70,6 +70,7 @@ payload]]></ee:set-payload>
 	</munit:test>
 	<munit:test name="test-suite-get:\customers\(customerId):customers-configTest" description="Test" doc:id="7e00bf84-7715-46c2-8052-070e60ce9e17" >
 		 <munit:enable-flow-sources>
+            <munit:enable-flow-source value="customers-main"/>
 	        <munit:enable-flow-source value="get:\customers\(customerId):customers-config"/>
     	</munit:enable-flow-sources>
 		<munit:execution>
