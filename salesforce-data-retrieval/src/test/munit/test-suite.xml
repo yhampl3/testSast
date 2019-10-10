@@ -97,13 +97,20 @@ payload]]></ee:set-payload>
 }]]]]></salesforce:records>
 			</salesforce:create>
 			<try doc:name="Try" doc:id="29c21e82-c1e1-4072-9e23-772e4ff8d408" >
-				<http:request method="POST" doc:name="Request" doc:id="b2b587f1-0bc6-4c0b-87a2-fc931e1891e2" config-ref="HTTP_Request_configuration" path="/">
-				<http:body><![CDATA[#[{
+				<ee:transform doc:name="Set request body" doc:id="b0f5c5f7-8488-41dd-9280-88817ef7cb59" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
 	"field": "unknownField",
 	"object": "Contact",
 	"searchKey": "Name",
 	"searchValue": "TestFirstName TestLastName"
-}]]]></http:body>
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+				<http:request method="POST" doc:name="Request" doc:id="b2b587f1-0bc6-4c0b-87a2-fc931e1891e2" config-ref="HTTP_Request_configuration" path="/">
 				<http:headers><![CDATA[#[output applicaton/java
 ---
 {
@@ -112,7 +119,7 @@ payload]]></ee:set-payload>
 			</http:request>
 				<error-handler >
 					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="c9d8efa0-d293-4add-81a9-0b1ec83d937b" >
-						<munit-tools:assert-that doc:name="Assert the error message" doc:id="d1d2b2cf-c54a-4ea3-96bc-859e92a46d60" expression="#[error.description]" is="#[MunitTools::equalTo(&quot;HTTP POST on resource 'http://localhost:&quot; ++ p('http.port') ++ &quot;/' failed: internal server error (500).&quot;)]" message="Error message is not correct!" />
+						<munit-tools:assert-that doc:name="Assert the error message" doc:id="d1d2b2cf-c54a-4ea3-96bc-859e92a46d60" expression="#[error.description]" is="#[MunitTools::equalTo(&quot;HTTP POST on resource 'http://localhost:&quot; ++ p('http.port') ++ &quot;/' failed: bad request (400).&quot;)]" message="Error message is not correct!" />
 					</on-error-continue>
 				</error-handler>
 			</try>
