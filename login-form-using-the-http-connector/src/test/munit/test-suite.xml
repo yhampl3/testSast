@@ -129,6 +129,7 @@ payload.html.body]]></ee:set-payload>
 		description="Test" doc:id="75c31827-142c-4450-b92b-42b125c98a96">
 		<munit:enable-flow-sources>
 			<munit:enable-flow-source value="CallLoginFlowUsingRequester" />
+			<munit:enable-flow-source value="DoLoginFlow" />
 		</munit:enable-flow-sources>
 		<munit:execution>
 			<http:request method="GET" doc:name="Request to /requesterLogin"
