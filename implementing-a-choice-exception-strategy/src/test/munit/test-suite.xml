@@ -33,10 +33,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	"filePath" : p('file.input.path')
 }]]]></http:query-params>
 			</http:request>
-		</munit:execution>
-		<munit:validation>
-			<ee:transform doc:name="Transform response"
-				doc:id="5a10e1ac-1ef2-438b-8806-ce7970dd7e5d">
+			<ee:transform doc:name="Transform response" doc:id="5a10e1ac-1ef2-438b-8806-ce7970dd7e5d">
 				<ee:message>
 					<ee:set-payload><![CDATA[%dw 2.0
 output application/java
@@ -63,6 +60,8 @@ output application/java
 ]]]></ee:set-variable>
 				</ee:variables>
 			</ee:transform>
+		</munit:execution>
+		<munit:validation>
 			<munit-tools:assert-that
 				doc:name='Assert that response is equal to expected one' doc:id="f8b3dd47-c439-456a-86e1-424d45bb2f71"
 				expression="#[payload]" is="#[MunitTools::equalTo(vars.expectedResult)]" />
@@ -84,7 +83,7 @@ output application/java
 					<on-error-continue enableNotifications="true"
 						logException="true" doc:name="On Error Continue"
 						doc:id="4ad52c41-f44e-4968-8b76-63b0fc8f741f">
-						<munit-tools:assert-that doc:name='Assert that request failed "not found (404)"' doc:id="f8b3dd47-c439-456a-86e1-424d45bb2f71" expression="#[error.description]" is="#[MunitTools::equalTo(&quot;HTTP GET on resource 'http://0.0.0.0:8081/?filePath=invalid' failed: not found (404).&quot;)]" />
+						<munit-tools:assert-that doc:name='Assert that request failed "not found (404)"' doc:id="f8b3dd47-c439-456a-86e1-424d45bb2f71" expression="#[error.description]" is='#[MunitTools::containsString("not found (404)")]' />
 					</on-error-continue>
 				</error-handler>
 			</try>
@@ -107,7 +106,7 @@ output application/java
 				</http:request>
 				<error-handler >
 					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="4ad52c41-f44e-4968-8b76-63b0fc8f741f" >
-						<munit-tools:assert-that doc:name='Assert that request failed with "unauthorized (401)"' doc:id="f8b3dd47-c439-456a-86e1-424d45bb2f71" expression="#[error.description]" is="#[MunitTools::equalTo(&quot;HTTP GET on resource 'http://0.0.0.0:8082/' failed: unauthorized (401).&quot;)]" />
+						<munit-tools:assert-that doc:name='Assert that request failed with "unauthorized (401)"' doc:id="f8b3dd47-c439-456a-86e1-424d45bb2f71" expression="#[error.description]" is='#[MunitTools::containsString("unauthorized (401)")]' />
 					</on-error-continue>
 				</error-handler>
 			</try>
