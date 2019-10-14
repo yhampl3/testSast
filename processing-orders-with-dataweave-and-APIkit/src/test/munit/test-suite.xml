@@ -16,7 +16,7 @@ http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/fil
 	<http:request-config name="HTTP_Test_Request_configuration" doc:name="HTTP Request configuration" doc:id="3cfb1b75-5d2c-48b1-89c7-40bbfbe118c0" >
 		<http:request-connection host="localhost" port="${http.port}" />
 	</http:request-config>
-	<munit:test name="test-suite-get:\currencies:currency-configTest" description="Test" doc:id="1c9f7463-90c6-487f-becb-1639043b68a9" >
+	<munit:test name="test-suite-get:\currencies:currency-configTest" description="Test" doc:id="1c9f7463-90c6-487f-becb-1639043b68a9">
 		<munit:enable-flow-sources>
 	        <munit:enable-flow-source value="currency-main"/>
 	        <munit:enable-flow-source value="get:\currencies:currency-config"/>
@@ -41,7 +41,8 @@ payload]]></ee:set-payload>
 	<munit:test name="test-suite-booksFlowTest" description="Test" doc:id="ebc0442f-1120-4ae6-a564-42457d6fae33" >
 		<munit:enable-flow-sources>
 	        <munit:enable-flow-source value="booksFlow"/>
-	    <munit:enable-flow-source value="get:\currencies:currency-config"/>
+			<munit:enable-flow-source value="get:\currencies:currency-config" />
+			<munit:enable-flow-source value="currency-main" />
     	</munit:enable-flow-sources>
 		<munit:execution >
 			<try doc:name="Try" doc:id="982736d2-9363-4129-8408-2820c9b87721" >
