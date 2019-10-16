@@ -21,8 +21,8 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 			</reconnection>
 		</netsuite:login-authentication-connection>
 	</netsuite:config>
-	<apikit:config name="netsuite-api-config" raml="netsuite-api.raml"
-		outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+	<apikit:config name="netsuite-api-config"
+		outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" api="api/netsuite-api.raml"/>
 	<configuration-properties doc:name="Configuration properties" doc:id="f81c0c24-2889-40ad-9a84-3057ce4e91c6" file="mule-artifact.properties" />
 	<flow name="netsuite-api-main">
 		<http:listener config-ref="netsuite-api-httpListenerConfig"
