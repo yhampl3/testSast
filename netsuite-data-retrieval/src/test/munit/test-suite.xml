@@ -27,12 +27,13 @@ http://www.mulesoft.org/schema/mule/netsuite http://www.mulesoft.org/schema/mule
 		<munit:execution>
 			<flow-ref doc:name="createTestCustomer" doc:id="1a055849-7988-4f15-8eba-8ae65d3cae11"
 				name="createTestCustomer" />
-			<flow-ref doc:name="createTestOpportunity" doc:id="ec74ccdd-e44b-4dce-b8b4-a3bfe110b266"
-				name="createTestOpportunity" />
+ 			<flow-ref doc:name="createTestOpportunity" doc:id="ec74ccdd-e44b-4dce-b8b4-a3bfe110b266"
+ 				name="createTestOpportunity" />
 			<http:request method="GET"
 				doc:name="Request to /api/opportunities?title=TestSystemsOpportunity"
 				doc:id="ed613899-60bd-4654-8c85-a0930951dd12" config-ref="HTTP_Request_configuration"
-				path="/api/opportunities?title=TestSystemsOpportunity" />
+				path="/api/opportunities?title=TestSystemsOpportunity" >
+			</http:request>
 		</munit:execution>
 		<munit:validation>
 			<ee:transform doc:name="Transform response"
@@ -78,7 +79,7 @@ output application/java
 		<netsuite:upsert-record recordType="OPPORTUNITY"
 			doc:name="Upsert opportunity" doc:id="9e0337de-c59a-4a06-84a8-71160edf5bc2"
 			config-ref="NetSuite_Config" />
-		<set-variable value="#[output application/java --- payload.internalId]"
+		<set-variable value="#[output application/java --- payload.baseRef.internalId]"
 			doc:name="Set testCustomerInternalId variable" doc:id="20aa7314-17c1-44ea-94e2-639aa55db88e"
 			variableName="testOpportunityInternalId" mimeType="application/java" />
 	</sub-flow>
@@ -227,7 +228,7 @@ output application/java
 		<netsuite:upsert-record recordType="CUSTOMER"
 			doc:name="Upsert test customer" doc:id="9e0337de-c59a-4a06-84a8-71160edf5bc2"
 			config-ref="NetSuite_Config" />
-		<set-variable value="#[output application/java --- payload.internalId]"
+		<set-variable value="#[output application/java --- payload.baseRef.internalId]"
 			doc:name="Set testCustomerInternalId variable" doc:id="20aa7314-17c1-44ea-94e2-639aa55db88e"
 			variableName="testCustomerInternalId" mimeType="application/java" />
 	</sub-flow>
