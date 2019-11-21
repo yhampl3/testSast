@@ -481,6 +481,7 @@
            <url>https://repository-master.mulesoft.org/snapshots/</url>
            <uniqueVersion>false</uniqueVersion>
         </snapshotRepository>
+    </distributionManagement>
 
     <scm>
         <connection>scm:git:https://github.com/mulesoft/anypoint-examples.git</connection>
