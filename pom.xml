@@ -456,6 +456,12 @@
             <name>JBoss</name>
             <url>http://repository.jboss.com/</url>
         </repository>
+	<repository>
+           <id>anypoint-exchange</id>
+           <name>Anypoint Exchange</name>
+           <url>https://maven.anypoint.mulesoft.com/api/v1/maven</url>
+           <layout>default</layout>
+        </repository>
     </repositories>
 
     <pluginRepositories>
