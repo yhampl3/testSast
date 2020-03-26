@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+<mule xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
-    <configuration-properties doc:name="Configuration properties" file="mule-artifact.properties" />
+   
+    <configuration-properties doc:name="Configuration properties" doc:id="7346ff93-d71e-4415-b2f3-4710a45b2055" file="mule-artifact.properties" />
     <http:listener-config name="customers-httpListenerConfig">
         <http:listener-connection host="0.0.0.0" port="${http.port}" />
     </http:listener-config>
     <apikit:config name="customers-config" api="api/customers.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
-    <flow name="customers-main">
-        <http:listener config-ref="customers-httpListenerConfig" path="/api/*" doc:name="Listener">
+	<flow name="customers-main">
+        <http:listener config-ref="customers-httpListenerConfig" path="/api/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
                 <http:headers>#[vars.outboundHeaders default {}]</http:headers>
             </http:response>
@@ -99,7 +100,7 @@ output application/json
         </error-handler>
     </flow>
     <flow name="customers-console">
-        <http:listener config-ref="customers-httpListenerConfig" path="/console/*" doc:name="Listener">
+        <http:listener config-ref="customers-httpListenerConfig" path="/console/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
                 <http:headers>#[vars.outboundHeaders default {}]</http:headers>
             </http:response>
@@ -111,8 +112,7 @@ output application/json
         <apikit:console config-ref="customers-config" />
         <error-handler>
             <on-error-propagate type="APIKIT:NOT_FOUND">
-                <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="
-http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+                <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
                     <ee:message>
                         <ee:set-payload><![CDATA[%dw 2.0
 output application/json
@@ -127,8 +127,13 @@ output application/json
         </error-handler>
     </flow>
     <flow name="put:\customers\(customerId):application\json:customers-config">
-        <logger level="INFO" message="put:\customers\(customerId):application\json:customers-config" doc:name="Logger"/>
-		<ee:transform doc:name="Create response" doc:id="59977511-bd30-497b-861b-6a13a486622e" >
+        <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" doc:name="Set customerId">
+            <ee:variables>
+                <ee:set-variable variableName="customerId">attributes.uriParams.'customerId'</ee:set-variable>
+            </ee:variables>
+        </ee:transform>
+        <logger level="INFO" message="put:\customers\(customerId):application\json:customers-config" />
+		<ee:transform doc:name="Create Response" doc:id="78b8c3b1-8dc8-4b56-9b4c-1770e67648ce" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
@@ -140,8 +145,13 @@ output application/json
 		</ee:transform>
     </flow>
     <flow name="get:\customers\(customerId):customers-config">
-        <logger level="INFO" message="get:\customers\(customerId):customers-config" doc:name="Logger"/>
-		<ee:transform doc:name="Create response" doc:id="fec15fe9-071c-4176-9ab5-a35c4c427742" >
+        <ee:transform xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" doc:name="Set customerId">
+            <ee:variables>
+                <ee:set-variable variableName="customerId">attributes.uriParams.'customerId'</ee:set-variable>
+            </ee:variables>
+        </ee:transform>
+        <logger level="INFO" message="get:\customers\(customerId):customers-config" />
+		<ee:transform doc:name="Create Response" doc:id="4a37a37f-7d7b-4ee1-b398-5aee493afa83" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
@@ -157,7 +167,7 @@ output application/json
     </flow>
     <flow name="get:\customers:customers-config">
         <logger level="INFO" message="get:\customers:customers-config" />
-		<ee:transform doc:name="Create response" doc:id="4296fdba-e11e-4b79-bcbd-24fa0ffada91" >
+		<ee:transform doc:name="Create Response" doc:id="aa0fdb98-8b00-4095-a524-03478278d5f9" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
@@ -181,7 +191,7 @@ output application/json
     </flow>
     <flow name="post:\customers:application\json:customers-config">
         <logger level="INFO" message="post:\customers:application\json:customers-config" />
-		<ee:transform doc:name="Create response" doc:id="cdd35f66-b30b-4a27-aa5d-006ace0b0b59" >
+		<ee:transform doc:name="Create response" doc:id="e1444ae9-1166-482d-b848-5c08c5d342c7" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
