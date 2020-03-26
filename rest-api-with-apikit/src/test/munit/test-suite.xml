@@ -16,6 +16,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<munit:test name="test-suite-customers-mainTest" description="Test" doc:id="bce45cbf-5843-4d10-8d2a-35b86b6f9030">
         <munit:enable-flow-sources>
 			<munit:enable-flow-source value="customers-main" />
+			<munit:enable-flow-source value="get:\customers:customers-config" />
         </munit:enable-flow-sources>
 		<munit:execution>
             <http:request method="GET" doc:name="Request" doc:id="19bd71d1-12c5-4522-b0d7-8b39350136de" config-ref="HTTP_Request_configuration"
