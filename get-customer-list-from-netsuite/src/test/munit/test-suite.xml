@@ -15,7 +15,7 @@ http://www.mulesoft.org/schema/mule/netsuite http://www.mulesoft.org/schema/mule
 		<http:request-connection host="0.0.0.0" port="${http.port}" />
 	</http:request-config>
 	<configuration-properties doc:name="Configuration properties" doc:id="3488bd04-d53f-46d0-853a-2063507b8118" file="test.properties" />
-	<munit:test name="testFlowTest" description="Test" doc:id="f4fa596c-28a0-491c-b938-14df86b36642" >
+	<munit:test name="testFlowTest" description="Test" doc:id="eef4979d-9f85-468c-8f70-553e9ec9ef07" >
 		<munit:enable-flow-sources>
 			<munit:enable-flow-source value="testFlow" />
 		</munit:enable-flow-sources>
@@ -38,7 +38,6 @@ output application/java
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<netsuite:upsert-record recordType="CUSTOMER" doc:name="Upsert test customer" doc:id="9e0337de-c59a-4a06-84a8-71160edf5bc2" config-ref="NetSuite_Config"/>
             <netsuite:upsert-record recordType="CUSTOMER" doc:name="Upsert test customer" doc:id="f3c651bf-94bd-4d57-b563-fbb9d2cde717" config-ref="NetSuite_Config" />
             <set-variable value="#[output application/java --- payload.internalId]" doc:name="Set testCustomerInternalId variable" doc:id="35e60fa7-a7a0-4cef-9400-1bf255dce128" variableName="testCustomerInternalId" mimeType="application/java" />
             <ee:transform doc:name="Customer search request" doc:id="3e0cfb70-31bc-44a4-a594-0cc65dc4fc52">
@@ -79,7 +78,7 @@ output application/java
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<netsuite:delete-record doc:name="Delete test customer" doc:id="aa12cef6-8df2-4835-9a0f-0dcc75dd1fd3" config-ref="NetSuite_Config"/>
+		<netsuite:delete-record doc:name="Delete test customer" doc:id="eed55343-bc1a-4721-bb83-721172f90b89" config-ref="NetSuite_Config"/>
 	</sub-flow>
 
 </mule>
