@@ -15,31 +15,14 @@ http://www.mulesoft.org/schema/mule/netsuite http://www.mulesoft.org/schema/mule
 		<http:request-connection host="0.0.0.0" port="${http.port}" />
 	</http:request-config>
 	<configuration-properties doc:name="Configuration properties" doc:id="3488bd04-d53f-46d0-853a-2063507b8118" file="test.properties" />
-	<munit:test name="testFlowTest" description="Test" doc:id="f4fa596c-28a0-491c-b938-14df86b36642" >
+	<munit:test name="testFlowTest" description="Test" doc:id="eef4979d-9f85-468c-8f70-553e9ec9ef07" >
 		<munit:enable-flow-sources>
 			<munit:enable-flow-source value="testFlow" />
 		</munit:enable-flow-sources>
 		<munit:execution >
-			<flow-ref doc:name="createTestCustomer" doc:id="f6dd791b-f31f-489f-8f35-26a9c4cb1796" name="createTestCustomer"/>
-			<http:request method="GET" doc:name="Request to /?lastname=MrTester" doc:id="ed613899-60bd-4654-8c85-a0930951dd12" config-ref="HTTP_Request_configuration" path="/?lastname=MrTester"/>
-		</munit:execution>
-		<munit:validation >
-			<ee:transform doc:name="Transform html" doc:id="8094eae8-0472-4385-8530-3eb7fe407a46" >
-				<ee:message >
-					<ee:set-payload ><![CDATA[%dw 2.0
-output application/java
----
-payload.html.body.table.tbody.div.line.tr.td]]></ee:set-payload>
-				</ee:message>
-			</ee:transform>
-			<munit-tools:assert-that doc:name="Assert that last name is equal to 'MrTester'" doc:id="fa747626-9c2f-4336-9a6a-b1fec144f7a5" expression="#[payload]" is="#[MunitTools::equalTo('MrTester')]"/>
-			<flow-ref doc:name="deleteTestCustomer" doc:id="19c439c5-67f6-4721-ab2e-49ad0f53da19" name="deleteTestCustomer"/>
-		</munit:validation>
-	</munit:test>
-	<sub-flow name="createTestCustomer" doc:id="2722aa43-07f0-4911-af42-87ade25d0cbc" >
-		<ee:transform doc:name="Prepare request with test customer" doc:id="4f573a3e-cd9d-4c8b-bedd-73fa3cefa5ee" >
-			<ee:message >
-				<ee:set-payload ><![CDATA[%dw 2.0
+            <ee:transform doc:name="Prepare request with test customer" doc:id="e3c7df72-42c1-4b94-9f09-1b530302d53e">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
 output application/java
 ---
 {
@@ -55,11 +38,34 @@ output application/java
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<netsuite:upsert-record recordType="CUSTOMER" doc:name="Upsert test customer" doc:id="9e0337de-c59a-4a06-84a8-71160edf5bc2" config-ref="NetSuite_Config"/>
-		<set-variable value="#[output application/java --- payload.internalId]" doc:name="Set testCustomerInternalId variable" doc:id="20aa7314-17c1-44ea-94e2-639aa55db88e" variableName="testCustomerInternalId" mimeType="application/java"/>
-	</sub-flow>
-	<sub-flow name="deleteTestCustomer" doc:id="944b1c61-eec8-4157-a695-4aede52f9627" >
-		<ee:transform doc:name="Prepare delete test customer request" doc:id="6adfb047-595a-4ac8-8147-a3d0e7fda58a" >
+            <netsuite:upsert-record recordType="CUSTOMER" doc:name="Upsert test customer" doc:id="f3c651bf-94bd-4d57-b563-fbb9d2cde717" config-ref="NetSuite_Config" />
+            <set-variable value="#[output application/java --- payload.internalId]" doc:name="Set testCustomerInternalId variable" doc:id="35e60fa7-a7a0-4cef-9400-1bf255dce128" variableName="testCustomerInternalId" mimeType="application/java" />
+            <ee:transform doc:name="Customer search request" doc:id="3e0cfb70-31bc-44a4-a594-0cc65dc4fc52">
+                <ee:message>
+                    <ee:set-payload><![CDATA[%dw 2.0
+output application/java
+---
+{
+	lastName: {
+		operator: "CONTAINS",
+		searchValue: "MrTester"
+	} as Object {
+		class : "org.mule.module.netsuite.extension.api.SearchStringField"
+	}
+} as Object {
+	class : "org.mule.module.netsuite.extension.api.CustomerSearchBasic"
+}]]></ee:set-payload>
+                </ee:message>
+            </ee:transform>
+            <netsuite:search key="CUSTOMER_BASIC" doc:name="Search Customer" doc:id="34428447-349a-4629-8301-48a965ed3ff9" config-ref="NetSuite_Config" pageSize="10" target="customer" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that last name is equal to 'MrTester'" doc:id="504cf3b4-f03a-4249-abb9-1207007bc25d" expression="#[vars.customer[0].lastName]" is="#[MunitTools::equalTo('MrTester')]"/>
+			<flow-ref doc:name="deleteTestCustomer" doc:id="342a8396-3fd4-4b03-b605-0e4ff08e964c" name="deleteTestCustomer"/>
+		</munit:validation>
+	</munit:test>
+	<sub-flow name="deleteTestCustomer" doc:id="e31d1bb5-4235-4ffd-9e05-74217bbe877f" >
+		<ee:transform doc:name="Prepare delete test customer request" doc:id="43df0d6b-3ea8-4f64-af7f-348f699ee79a" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/java
@@ -72,23 +78,7 @@ output application/java
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<netsuite:delete-record doc:name="Delete test customer" doc:id="aa12cef6-8df2-4835-9a0f-0dcc75dd1fd3" config-ref="NetSuite_Config"/>
+		<netsuite:delete-record doc:name="Delete test customer" doc:id="eed55343-bc1a-4721-bb83-721172f90b89" config-ref="NetSuite_Config"/>
 	</sub-flow>
-	<munit:test name="test-suiteTest" description="MUnit Test" doc:id="adda9557-be0f-43ec-ad5e-e436cacc0890" >
-		<munit:execution >
-			<http:request method="GET" doc:name="Request with invalid query parameters" doc:id="ed613899-60bd-4654-8c85-a0930951dd12" config-ref="HTTP_Request_configuration" path="/" outputMimeType="application/xml"/>
-		</munit:execution>
-		<munit:validation >
-			<ee:transform doc:name="Transform html" doc:id="8094eae8-0472-4385-8530-3eb7fe407a46" >
-				<ee:message >
-					<ee:set-payload ><![CDATA[%dw 2.0
-output application/java
----
-payload.html.body.h1]]></ee:set-payload>
-				</ee:message>
-			</ee:transform>
-			<munit-tools:assert-that doc:name="Assert that HTML contains 'Error: Bad request - missing lastname query parameter'" doc:id="0e48f01d-e01a-4403-a707-f1fcbb807a41" expression="#[payload]" is="#[MunitTools::equalTo('Error: Bad request - missing lastname query parameter')]" />
-		</munit:validation>
-	</munit:test>
 
 </mule>
