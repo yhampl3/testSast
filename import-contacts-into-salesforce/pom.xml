@@ -75,6 +75,7 @@
             <artifactId>munit-tools</artifactId>
             <version>${munit.version}</version>
             <classifier>mule-plugin</classifier>
+            <scope>test</scope>
         </dependency>
     </dependencies>
     
