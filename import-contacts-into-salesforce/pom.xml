@@ -61,12 +61,14 @@
             <artifactId>mule-salesforce-connector</artifactId>
             <version>${sfdc.connector.version}</version>
             <classifier>mule-plugin</classifier>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.mulesoft.munit</groupId>
             <artifactId>munit-runner</artifactId>
             <version>${munit.version}</version>
             <classifier>mule-plugin</classifier>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.mulesoft.munit</groupId>
