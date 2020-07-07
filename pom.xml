@@ -9,7 +9,6 @@
     <modules>
         <module>content-based-routing</module>
         <module>dataweave-2-basics</module>
-        <module>dataweave-with-flowreflookup</module>
         <module>exposing-a-restful-resource-using-the-HTTP-connector</module>
         <module>get-customer-list-from-netsuite</module>
         <module>http-request-response-with-logger</module>
