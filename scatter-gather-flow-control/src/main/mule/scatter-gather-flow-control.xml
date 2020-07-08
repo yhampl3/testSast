@@ -17,7 +17,8 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</file:config>
 	<flow name="scatter-gather-flow-controlFlow" doc:id="bb9f9e82-e197-476d-a409-74d52d713a74" >
 		<http:listener config-ref="HTTP_Listener_config" path="/scatterGather" doc:name="Listener" doc:id="39ada237-f860-4c6c-873f-f1f17f2d0b69" />
-		<scatter-gather doc:name="Scatter-Gather" doc:id="efd3673e-3107-4559-adfd-818199d03ae1" >
+		<set-payload value="#[{}]" doc:name="Set Payload" doc:id="ddc5068e-926a-4a0a-98b6-00e3de13ea31" />
+        <scatter-gather doc:name="Scatter-Gather" doc:id="efd3673e-3107-4559-adfd-818199d03ae1" >
 			<route >
 				<file:read config-ref="File_Config" path="contacts-1.csv" doc:name="Read contacts-1.csv file" doc:id="102b51ac-1b4a-4901-933e-418dee1f557f" outputMimeType="text/csv" target="contacts1"/>
 			</route>
