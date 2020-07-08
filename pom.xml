@@ -13,7 +13,6 @@
         <module>get-customer-list-from-netsuite</module>
         <module>http-request-response-with-logger</module>
         <module>import-contacts-into-salesforce</module>
-        <module>import-leads-into-salesforce</module>
         <module>munit-short-tutorial</module>
         <module>login-form-using-the-http-connector</module>
         <module>netsuite-data-retrieval</module>
@@ -33,6 +32,7 @@
         <module>dataweave-with-flowreflookup</module>
         <!-- proxying-a-soap-api is currently unavaliable due to issue with external Tshirt service -->
         <!-- <module>proxying-a-soap-api</module -->
+        <module>import-leads-into-salesforce</module>
         <module>adding-a-new-customer-to-workday-revenue-management</module>
         <module>addition-using-javascript-transformer</module>
         <module>authenticating-salesforce-using-oauth2</module>
