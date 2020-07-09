@@ -57,7 +57,7 @@ output application/csv header=false
 		<set-payload value='#["Hello " ++ attributes.queryParams.username]' doc:name="Prepare greeting" doc:id="bd0135c4-02ce-4075-a169-83a728af3dcb" mimeType="text/plain"/>
 	</flow>
 	<flow name="dataweave2-basicsFlow4" doc:id="887625f1-3f6b-4ef1-a57e-c41bc91ca933" >
-		<http:listener config-ref="HTTP_Listener_config" path="/greet5" doc:name="/greet5" doc:id="54fbf263-ce30-413f-873b-7caef7ee0027" allowedMethods="POST" outputMimeType="application/xml"/>
+		<http:listener config-ref="HTTP_Listener_config" path="/greet5" doc:name="/greet5" doc:id="54fbf263-ce30-413f-873b-7caef7ee0027" allowedMethods="POST"/>
 		<set-variable variableName="username" value="#[output application/json --- payload.user.username]" doc:name="Set username variable" doc:id="650d8671-1dfd-4251-88dc-1a6b64724fa2" />
 		<file:write config-ref="File_Config" path="${file.txt.name}" doc:name="Write to file" doc:id="b7a66af9-1d08-4290-bb17-4df49b279b7b">
 			<file:content><![CDATA[#[output text/plain --- "Username: " ++ vars.username ++ " Age: " ++ payload.user.age]]]></file:content>

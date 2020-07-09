@@ -25,7 +25,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<munit:execution>
 			<http:request method="GET" doc:name="Request to /login"
 				doc:id="2c290e56-0f07-4916-8cd1-17eb864a8adf" config-ref="HTTP_Request_test_configuration"
-				path="/login" outputMimeType="application/xml" />
+				path="/login" />
 		</munit:execution>
 		<munit:validation>
 			<ee:transform doc:name="Transform html"
@@ -65,7 +65,7 @@ output application/json
 			</ee:transform>
 			<http:request method="POST" doc:name="Request to /login"
 				doc:id="2c290e56-0f07-4916-8cd1-17eb864a8adf" config-ref="HTTP_Request_test_configuration"
-				path="/login" outputMimeType="application/xml" />
+				path="/login" />
 		</munit:execution>
 		<munit:validation>
 			<ee:transform doc:name="Transform html"
@@ -106,7 +106,7 @@ output application/json
 			</ee:transform>
 			<http:request method="POST" doc:name="Request to /login"
 				doc:id="2c290e56-0f07-4916-8cd1-17eb864a8adf" config-ref="HTTP_Request_test_configuration"
-				path="/login" outputMimeType="application/xml" />
+				path="/login" />
 		</munit:execution>
 		<munit:validation>
 			<ee:transform doc:name="Transform html"
@@ -134,7 +134,7 @@ payload.html.body]]></ee:set-payload>
 		<munit:execution>
 			<http:request method="GET" doc:name="Request to /requesterLogin"
 				doc:id="2c290e56-0f07-4916-8cd1-17eb864a8adf" config-ref="HTTP_Request_test_configuration"
-				path="/requesterLogin" outputMimeType="application/xml" />
+				path="/requesterLogin" />
 		</munit:execution>
 		<munit:validation>
 			<ee:transform doc:name="Transform html"
