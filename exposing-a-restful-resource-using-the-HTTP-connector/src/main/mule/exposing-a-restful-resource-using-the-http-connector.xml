@@ -11,7 +11,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</http:listener-config>
 	<os:object-store name="Object_store" doc:name="Object store" doc:id="c721e8e0-3599-4c29-acc7-4bbb30013cec" />
 	<flow name="storePersonFlow" doc:id="2d611c4c-edec-4b75-aa94-25474d145040" >
-		<http:listener doc:name="POST/person" doc:id="a5ed0fce-aa12-4e00-a68c-fe99008f1559" allowedMethods="POST" config-ref="HTTP_Listener_config" path="/person" outputMimeType="application/json">
+		<http:listener doc:name="POST/person" doc:id="a5ed0fce-aa12-4e00-a68c-fe99008f1559" allowedMethods="POST" config-ref="HTTP_Listener_config" path="/person">
 		</http:listener>
 		<ee:transform doc:name="input data" doc:id="ad531934-2920-4714-8ce1-de83f6afe4ad" >
 			<ee:message >
