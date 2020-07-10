@@ -9,7 +9,7 @@ http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/fil
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<configuration-properties doc:name="Configuration properties" file="mule-artifact.properties" />
-	<file:config name="File_Config" doc:name="File Config" doc:id="23a15a10-142c-4b29-b973-e41896501660" outputMimeType="application/xml">
+	<file:config name="File_Config" doc:name="File Config" doc:id="23a15a10-142c-4b29-b973-e41896501660">
 		<file:connection workingDir="src/main/resources" />
 	</file:config>
 	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="0290942b-09fd-455e-ba21-672696ed5bb8" basePath="/api/" >
@@ -21,7 +21,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 				<fixed-frequency frequency="10" timeUnit="SECONDS"/>
 			</scheduling-strategy>
 		</scheduler>
-		<file:read config-ref="File_Config" path="orders.xml" doc:name="Read From Xml File" doc:id="979cdacf-f354-4f80-a115-8837c1f95587"/>
+		<file:read config-ref="File_Config" path="orders.xml" doc:name="Read From Xml File" doc:id="979cdacf-f354-4f80-a115-8837c1f95587" outputMimeType="application/xml"/>
 		<set-variable variableName="orders" value="#[payload]" doc:name="Save Input To  Variable orders" doc:id="f7b7b031-4c2c-4fbc-a8f2-f8ea5d3abbd5" mimeType="application/xml"/>
 		<http:request config-ref="HTTP_Request_configuration" method="GET" path="/currencies" doc:name="GET Currencies" doc:id="0d11e723-17ef-40dd-9a1a-e57ee1d0425f">
 		</http:request>
