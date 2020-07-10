@@ -13,7 +13,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 	<munit:config name="test-suite.xml" />
 	<http:request-config name="HTTP_Request_configuration"
-		doc:name="HTTP Request configuration" doc:id="063235fc-785a-45ef-a223-d78d8f06affa">
+		doc:name="HTTP Request configuration" doc:id="063235fc-785a-45ef-a223-d78d8f06affa" basePath="/">
 		<http:request-connection host="0.0.0.0" port="${http.port}" />
 	</http:request-config>
 	<munit:test name="track-a-custom-business-eventFlowTest1" description="Test" doc:id="0e1425ad-604f-481b-8fd1-d3ee7b9c5c4d" >
