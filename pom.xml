@@ -30,7 +30,8 @@
         <module>track-a-custom-business-event</module>
         <!-- After raising connector version fails -->
         <!-- <module>salesforce-data-synchronization-using-watermarking-and-batch-processing</module -->
-        <module>dataweave-with-flowreflookup</module>
+        <!-- After raising connector version fails -->
+        <!-- <module>dataweave-with-flowreflookup</module -->
         <!-- proxying-a-soap-api is currently unavaliable due to issue with external Tshirt service -->
         <!-- <module>proxying-a-soap-api</module -->      
         <module>hello-world</module>
