@@ -46,7 +46,7 @@ output application/json
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<http:request config-ref="HTTP_Request_configuration" method="POST" path="/login" doc:name="Do Login" doc:id="5830b5a5-842c-4b9d-b412-fdb756ec63e8" followRedirects="true" sendBodyMode="ALWAYS" requestStreamingMode="ALWAYS">
+		<http:request config-ref="HTTP_Request_configuration" method="POST" path="/login" doc:name="Do Login" doc:id="5830b5a5-842c-4b9d-b412-fdb756ec63e8" followRedirects="true" sendBodyMode="ALWAYS" requestStreamingMode="ALWAYS" outputMimeType="application/json">
 		</http:request>
 	</flow>
 </mule>
