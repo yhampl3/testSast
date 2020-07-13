@@ -20,7 +20,7 @@ http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mu
 	        <munit:enable-flow-source value="showFormFlow"/>
     	</munit:enable-flow-sources>
 		<munit:execution >
-			<http:request method="GET" doc:name="Request" doc:id="b2b587f1-0bc6-4c0b-87a2-fc931e1891e2" config-ref="HTTP_Request_configuration" path="/">
+			<http:request method="GET" doc:name="Request" doc:id="b2b587f1-0bc6-4c0b-87a2-fc931e1891e2" config-ref="HTTP_Request_configuration" path="/" outputMimeType="application/xml">
 				<http:headers ><![CDATA[#[output applicaton/java
 ---
 {

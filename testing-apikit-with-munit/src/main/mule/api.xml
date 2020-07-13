@@ -14,7 +14,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
     <apikit:config name="api-config" raml="api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" doc:name="Router"/>
     <configuration-properties doc:name="Configuration properties" doc:id="3a454474-a8b7-465a-82fa-ffda27d933d5" file="mule-artifact.properties" />
 	<flow name="api-main">
-        <http:listener config-ref="api-httpListenerConfig" path="/api/*" doc:name="Listener">
+        <http:listener config-ref="api-httpListenerConfig" path="/api/*" doc:name="Listener" outputMimeType="text/plain">
             <http:response statusCode="#[vars.httpStatus default 200]">
             </http:response>
             <http:error-response statusCode="#[vars.httpStatus default 500]">
