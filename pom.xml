@@ -28,7 +28,8 @@
         <module>scatter-gather-flow-control</module>
         <module>testing-apikit-with-munit</module>
         <module>track-a-custom-business-event</module>
-        <module>salesforce-data-synchronization-using-watermarking-and-batch-processing</module>
+        <!-- After raising connector version fails -->
+        <!-- <module>salesforce-data-synchronization-using-watermarking-and-batch-processing</module -->
         <module>hello-world</module>
         <module>dataweave-with-flowreflookup</module>
         <!-- proxying-a-soap-api is currently unavaliable due to issue with external Tshirt service -->
