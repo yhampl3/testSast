@@ -33,8 +33,11 @@
         <module>hello-world</module>
         <module>dataweave-with-flowreflookup</module>
         <!-- proxying-a-soap-api is currently unavaliable due to issue with external Tshirt service -->
+        
+        <!-- Modules not fit for regression testing -->
+        
         <!-- <module>proxying-a-soap-api</module -->
-        <module>import-leads-into-salesforce</module>
+        <!-- <module>import-leads-into-salesforce</module>
         <module>adding-a-new-customer-to-workday-revenue-management</module>
         <module>addition-using-javascript-transformer</module>
         <module>authenticating-salesforce-using-oauth2</module>
@@ -58,7 +61,8 @@
         <module>sending-json-data-to-a-amqp-queue</module>
         <module>upload-to-ftp-after-converting-json-to-xml</module>
         <module>using-transactional-scope-in-jms-to-database</module>
-        <module>web-service-consumer</module>
+        <module>web-service-consumer</module> -->
+        
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
