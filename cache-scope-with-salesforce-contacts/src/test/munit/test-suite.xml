@@ -11,7 +11,7 @@ http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mul
 		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
-	<munit:config name="test-suite2.xml" />
+	<munit:config name="test-suite.xml" />
 	<munit:test name="test-cache-scope-with-salesforce-contacts-flow" description="Test" doc:id="f1d44ae8-a445-43df-b8e1-93dbf6fd3388" >
 		<munit:enable-flow-sources>
 	        <munit:enable-flow-source value="cache-scope-with-salesforce-contactsFlow"/>
