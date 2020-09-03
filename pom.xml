@@ -78,8 +78,8 @@
         <netsuite.connector.version>9.3.0</netsuite.connector.version>
         <oauth.module.version>1.1.12</oauth.module.version>
         <objectstore.connector.version>1.1.5</objectstore.connector.version>
-        <sfdc.connector.version>9.9.1</sfdc.connector.version>
-        <scripting.module.version>2.0.0</scripting.module.version>
+        <sfdc.connector.version>10.4.0</sfdc.connector.version>
+        <scripting.module.version>1.1.6</scripting.module.version>
         <!-- <servicenow.connector.version>6.6.0</servicenow.connector.version> -->
         <!-- <sftp.connector.version>1.3.7</sftp.connector.version> -->
         <sap.connector.version>5.1.6</sap.connector.version>
