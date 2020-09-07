@@ -33,10 +33,10 @@
         <module>salesforce-to-MySQL-DB-using-Batch-Processing</module>
         <module>salesforce-data-synchronization-using-watermarking-and-batch-processing</module>
         <!-- proxying-a-soap-api is currently unavaliable due to issue with external Tshirt service -->
-        <!-- <module>proxying-a-soap-api</module -->      
+        <!-- <module>proxying-a-soap-api</module> -->      
         
         <!-- Modules not fit for regression testing -->
-        <module>adding-a-new-customer-to-workday-revenue-management</module>
+        <!-- <module>adding-a-new-customer-to-workday-revenue-management</module>
         <module>addition-using-javascript-transformer</module>
         <module>authenticating-salesforce-using-oauth2</module>
         <module>cache-scope-with-salesforce-contacts</module>
