@@ -11,34 +11,31 @@
         <module>dataweave-2-basics</module>
         <module>exposing-a-restful-resource-using-the-HTTP-connector</module>
         <module>get-customer-list-from-netsuite</module>
+        <module>hello-world</module>
         <module>http-request-response-with-logger</module>
         <module>import-contacts-into-salesforce</module>
-        <module>munit-short-tutorial</module>
         <module>login-form-using-the-http-connector</module>
+        <module>munit-short-tutorial</module>
         <module>netsuite-data-retrieval</module>
         <module>processing-orders-with-dataweave-and-APIkit</module>
         <module>proxying-a-rest-api</module>
         <module>querying-a-db-and-attaching-results-to-an-email</module>
-        <module>rest-api-with-apikit</module>
         <module>querying-a-mysql-database</module>
+        <module>rest-api-with-apikit</module>
         <module>retry-mechanism-example</module>
         <module>salesforce-data-retrieval</module>
-        <!-- After raising connector version fails -->
-        <!-- <module>salesforce-to-MySQL-DB-using-Batch-Processing</module -->
         <module>scatter-gather-flow-control</module>
         <module>testing-apikit-with-munit</module>
         <module>track-a-custom-business-event</module>
-        <!-- After raising connector version fails -->
-        <!-- <module>salesforce-data-synchronization-using-watermarking-and-batch-processing</module -->
-        <!-- After raising connector version fails -->
-        <!-- <module>dataweave-with-flowreflookup</module -->
+        <!-- After raising connector version fails-->
+        <module>dataweave-with-flowreflookup</module>
+        <module>import-leads-into-salesforce</module>
+        <module>salesforce-to-MySQL-DB-using-Batch-Processing</module>
+        <module>salesforce-data-synchronization-using-watermarking-and-batch-processing</module>
         <!-- proxying-a-soap-api is currently unavaliable due to issue with external Tshirt service -->
         <!-- <module>proxying-a-soap-api</module -->      
-        <module>hello-world</module>
         
         <!-- Modules not fit for regression testing -->
-
-        <!-- <module>import-leads-into-salesforce</module>
         <module>adding-a-new-customer-to-workday-revenue-management</module>
         <module>addition-using-javascript-transformer</module>
         <module>authenticating-salesforce-using-oauth2</module>
